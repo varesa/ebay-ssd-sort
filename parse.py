@@ -6,7 +6,6 @@ import os
 import re
 
 def guess_capacity(title):
-    #matches = re.findall("([0-9.]{1,4})[^0-9]?([GT])", title.replace(',', ''), re.IGNORECASE)
     matches = re.findall("([0-9][0-9.]{0,3})[^0-9]?([GT])", title.replace(',', ''), re.IGNORECASE)
 
     guess_gigabytes = None
@@ -25,8 +24,7 @@ def guess_capacity(title):
         if gigabytes > 10_000:
             continue
 
-        else:
-            guess_gigabytes = gigabytes
+        guess_gigabytes = gigabytes
 
     return guess_gigabytes
 
@@ -47,8 +45,6 @@ def get_price(item):
         multiplier = 1.00
     else:
         multiplier = 1.24
-
-    #print(country, item_price, shipping_cost, multiplier)
 
     return multiplier * (item_price + shipping_cost)
 
